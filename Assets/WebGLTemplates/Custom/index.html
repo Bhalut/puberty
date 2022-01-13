@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>{{{ COMPANY_NAME }}} | {{{ PRODUCT_NAME }}}</title>
+    <link rel="shortcut icon" href="./assets/favicon.ico" />
+    <link rel="stylesheet" href="./assets/styles/style.css" />
+  </head>
+  <body>
+    <div id="unity-container" class="unity-desktop">
+      <canvas id="unity-canvas"></canvas>
+      <i id="unity-fullscreen-button" class="max-icon">
+        <svg viewBox="0 0 100 100">
+          <path d="M 10 10 L 90 10 L 90 90 M 90 10 L 10 90"></path>
+        </svg>
+        <svg viewBox="0 0 100 100">
+          <path d="M 10 10 L 10 90 L 90 90 M 10 90 L 90 10"></path>
+        </svg>
+      </i>
+      <div id="unity-mobile-warning">
+        WebGL builds are not supported on mobile devices.
+      </div>
+    </div>
+    <div class="content" id="unity-loading-bar">
+      <p>Cargando...</p>
+    </div>
+    <script src="./assets/scripts/main.js"></script>
+  </body>
+</html>
