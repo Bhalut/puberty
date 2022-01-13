@@ -7,7 +7,10 @@ using Utils;
 public class Player : MonoBehaviour
 {
 
-    [Header("Animation")] public SpriteAnimation deathAnimationSequence;
+    [Header("Animation")] public SpriteAnimation principalAnimation;
+
+    public SpriteAnimation deathAnimation;
+
 
     [Header("Speed")] public float speed = 1.5f;
 
@@ -16,21 +19,21 @@ public class Player : MonoBehaviour
     [Header("Direction")] public Vector2 initialDirection = Vector2.right;
 
     [Header("Data")] public GameStateData state;
+    private readonly Vector3 _startingPosition = new(0.27f, -1.15f, 0);
 
     private Collider2D _collider;
 
     private Vector2 _currentDirection;
     private Rigidbody2D _rigidbody;
-    private SpriteRenderer _spriteRenderer;
-    private Vector3 _startingPosition;
+
     public Action<bool> OnAnswerSuccess;
+    public Action OnPlayerDamage;
 
 
     private void Awake()
     {
         _collider = GetComponent<Collider2D>();
         _rigidbody = GetComponent<Rigidbody2D>();
-        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void Update()
@@ -58,36 +61,40 @@ public class Player : MonoBehaviour
 
         _rigidbody.MovePosition(position + translation);
     }
-    
+
     private void OnTriggerEnter2D(Collider2D col)
     {
         if (!col.gameObject.TryGetComponent(out Answer answer)) return;
 
-        if (answer.data.isCorrect) OnAnswerSuccess(answer.data.isCorrect);
+        if (answer.data.isCorrect)
+            OnAnswerSuccess(answer.data.isCorrect);
+        else
+            OnPlayerDamage();
     }
 
     public void Init()
     {
-        var transformMovement = transform;
-        _startingPosition = transformMovement.position;
-        transformMovement.position = _startingPosition;
+        transform.position = _startingPosition;
 
         speedMultiplier = 1.0f;
         _currentDirection = initialDirection;
         _rigidbody.isKinematic = false;
 
-        _spriteRenderer.enabled = true;
+        principalAnimation.enabled = true;
+        principalAnimation.loop = true;
         _collider.enabled = true;
-        deathAnimationSequence.enabled = false;
+        deathAnimation.enabled = false;
+        deathAnimation.loop = false;
         gameObject.SetActive(true);
     }
 
     public void DeathSequence()
     {
-        _spriteRenderer.enabled = false;
+        principalAnimation.enabled = false;
+        principalAnimation.loop = false;
         _collider.enabled = false;
-        deathAnimationSequence.enabled = true;
-        deathAnimationSequence.SpriteRenderer.enabled = true;
-        deathAnimationSequence.Restart();
+        deathAnimation.enabled = true;
+        deathAnimation.loop = true;
+        deathAnimation.Restart();
     }
 }

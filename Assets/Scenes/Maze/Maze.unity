@@ -3685,7 +3685,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &577342091
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3713,7 +3713,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 577342090}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
@@ -5534,7 +5534,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1489115712
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5562,7 +5562,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1489115711}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
@@ -8162,7 +8162,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e633b448675743a98fce6e844c9ed078, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathAnimationSequence: {fileID: 2062054673}
+  principalAnimation: {fileID: 2062054674}
+  deathAnimation: {fileID: 2062054673}
   speed: 1.5
   speedMultiplier: 1
   initialDirection: {x: 1, y: 0}
@@ -8192,7 +8193,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 39413626b0ea6544891f540e14407aa1, type: 3}
   - {fileID: 21300000, guid: 3c38ab880f98a11468ca5d595535171e, type: 3}
   animationTime: 0.125
-  loop: 0
+  loop: 1
 --- !u!114 &2062054674
 MonoBehaviour:
   m_ObjectHideFlags: 0

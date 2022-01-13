@@ -10,27 +10,27 @@ namespace Core
 {
     public class UIManager : MonoBehaviour
     {
-        [Header("HUD")] 
-        public TMP_Text scoreText;
+        [Header("HUD")] public TMP_Text scoreText;
+
         public TMP_Text livesText;
         public TMP_Text gameOverText;
 
-        [Header("UI Begin")] 
-        public GameObject uiBeginContainer;
+        [Header("UI Begin")] public GameObject uiBeginContainer;
+
         public Button playButton;
 
-        [Header("UI Game")] 
-        public TMP_Text questionText;
+        [Header("UI Game")] public TMP_Text questionText;
+
         public Answer[] answers = new Answer[4];
 
-        [Header("Data")]
-        public GameData gameData;
+        [Header("Data")] public GameData gameData;
+
         public QuestionData question;
 
         public void Init()
         {
             SetScore(0);
-            SetLives(0);
+            SetLives(3);
             GameOver(false);
 
             playButton.onClick.AddListener(StartGame);
@@ -40,6 +40,9 @@ namespace Core
         {
             SetQuestion();
             SetAnswer(answers);
+
+            scoreText.enabled = true;
+            livesText.enabled = true;
 
             uiBeginContainer.SetActive(false);
             gameData.state.onGame = true;
