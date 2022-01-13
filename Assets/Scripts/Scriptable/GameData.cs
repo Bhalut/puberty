@@ -7,6 +7,17 @@ namespace Scriptable
     {
         public int lives = 3;
         public int score;
-        public bool isCompleted;
+        public GameStateData state;
+
+        public void Init()
+        {
+            lives = 3;
+            score = 0;
+
+            state.onFail = false;
+            state.onGame = false;
+            state.onPause = false;
+            state.onSuccess = false;
+        }
     }
 }

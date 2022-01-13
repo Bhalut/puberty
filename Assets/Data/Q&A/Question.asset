@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68152d59e9fc4b1abdecaad1b1924f96, type: 3}
   m_Name: Question
   m_EditorClassIdentifier: 
-  question: "Es una caracter\xEDstica sexual secundaria"
+  title: Awesome question
   answers:
   - {fileID: 11400000, guid: 4a563d60dbf4f5a479adf32da424c78d, type: 2}
   - {fileID: 11400000, guid: 49cd9877eb9b2384bb875f096da8a930, type: 2}

@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa5f7fdb068a4c1996b00551aa3fbc02, type: 3}
   m_Name: AnswerData 2
   m_EditorClassIdentifier: 
-  answer: "Crecimiento de \xF3rganos sexuales"
+  title: Answer 2
   isCorrect: 0

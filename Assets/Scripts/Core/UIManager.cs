@@ -1,14 +1,16 @@
-﻿using TMPro;
+﻿using System.Collections.Generic;
+using Q_A;
 using Scriptable;
-using UnityEngine;
 using Scriptable.Q_A;
+using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace Core
 {
     public class UIManager : MonoBehaviour
     {
-        [Header("HUD")]
+        [Header("HUD")] 
         public TMP_Text scoreText;
         public TMP_Text livesText;
         public TMP_Text gameOverText;
@@ -16,9 +18,10 @@ namespace Core
         [Header("UI Begin")] 
         public GameObject uiBeginContainer;
         public Button playButton;
-        
-        [Header("UI Game")]
+
+        [Header("UI Game")] 
         public TMP_Text questionText;
+        public Answer[] answers = new Answer[4];
 
         [Header("Data")]
         public GameData gameData;
@@ -35,7 +38,11 @@ namespace Core
 
         private void StartGame()
         {
+            SetQuestion();
+            SetAnswer(answers);
+
             uiBeginContainer.SetActive(false);
+            gameData.state.onGame = true;
         }
 
         public void SetLives(int amount)
@@ -52,7 +59,18 @@ namespace Core
 
         private void SetQuestion()
         {
+            questionText.enabled = true;
             questionText.text = question.title;
+        }
+
+        private void SetAnswer(IReadOnlyList<Answer> answerList)
+        {
+            for (var i = 0; i < answerList.Count; i++)
+            {
+                answerList[i].data = question.answers[i];
+                answerList[i].GetComponent<SpriteRenderer>().enabled = true;
+                answerList[i].GetComponentInChildren<TMP_Text>().text = answerList[i].data.title;
+            }
         }
 
         private void GameOver(bool lose)
